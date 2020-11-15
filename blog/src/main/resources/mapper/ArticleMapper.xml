@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cryingbear.blog.dao.ArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.cryingbear.blog.entity.Article" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="categoryid" property="categoryid" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="tag" property="tag" jdbcType="VARCHAR" />
+    <result column="view" property="view" jdbcType="VARCHAR" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="createdtime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="updater" property="updater" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from article
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cryingbear.blog.entity.Article" >
+    insert into article (id, categoryid, description, 
+      `state`, tag, `view`, pic, 
+      createdtime, creator, updatetime, 
+      updater, isdelete, title, 
+      content)
+    values (#{id,jdbcType=INTEGER}, #{categoryid,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, #{view,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, 
+      #{createdtime,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{updater,jdbcType=VARCHAR}, #{isdelete,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cryingbear.blog.entity.Article" >
+    update article
+    set categoryid = #{categoryid,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      `state` = #{state,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=VARCHAR},
+      `view` = #{view,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      createdtime = #{createdtime,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      updater = #{updater,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, categoryid, description, `state`, tag, `view`, pic, createdtime, creator, 
+    updatetime, updater, isdelete, title, content
+    from article
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, categoryid, description, `state`, tag, `view`, pic, createdtime, creator, 
+    updatetime, updater, isdelete, title, content
+    from article
+  </select>
+</mapper>

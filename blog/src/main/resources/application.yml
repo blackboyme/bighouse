@@ -1,0 +1,23 @@
+server:
+  port: 80
+  servlet:
+    context-path: /blog
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://49.232.204.97:3306/blog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: blog
+    password: DKfzx3zFRD7ceM3G
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  resources:
+    static-locations: classpath:/META-INF/resources
+
+mybatis:
+  #映射文件路径
+  mapper-locations: classpath:mapper/*.xml
+  #模型所在的保命
+  type-aliases-package: com.pieruo.springboot.entity
+
+
