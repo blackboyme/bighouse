@@ -5,6 +5,7 @@ import com.cryingbear.blog.entity.Article;
 import com.cryingbear.blog.service.IArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class ArticleService implements IArticleService {
